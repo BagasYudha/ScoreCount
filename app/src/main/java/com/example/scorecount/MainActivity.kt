@@ -7,19 +7,39 @@ import com.example.scorecount.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    // Inisialisasi ViewModel
     private val viewModel: ScoreViewModel by viewModels()
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Menggunakan View Binding
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)  // Inisialisasi binding dengan benar
         setContentView(binding.root)
 
-        // Mengikat ViewModel ke UI
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+        // Mengambil nama tim dari intent dan menampilkannya di TextView
+        val teamAName = intent.getStringExtra("TEAM_A_NAME")
+        val teamBName = intent.getStringExtra("TEAM_B_NAME")
+
+        binding.tvTeamA.text = teamAName
+        binding.tvTeamB.text = teamBName
+
+        viewModel.namaTeamA = teamAName ?: "Team A"
+        viewModel.namaTeamB = teamBName ?: "Team B"
+
+        // Observe resultA dan resultB untuk menampilkan pesan kemenangan
+        viewModel.resultA.observe(this) { resultMessageA ->
+            if (resultMessageA.isNotEmpty()) {
+                binding.tvWinner.text = resultMessageA
+                disableButtons(binding)  // Disable tombol ketika ada yang menang
+            }
+        }
+
+        viewModel.resultB.observe(this) { resultMessageB ->
+            if (resultMessageB.isNotEmpty()) {
+                binding.tvWinner.text = resultMessageB
+                disableButtons(binding)  // Disable tombol ketika ada yang menang
+            }
+        }
 
         // Set observer untuk LiveData dari scoreA dan scoreB
         viewModel.scoreA.observe(this) { newValue ->
@@ -56,23 +76,31 @@ class MainActivity : AppCompatActivity() {
             viewModel.incrementScore(false, 3)
         }
 
-        // Logika untuk Input Team
-        binding.btnRename.setOnClickListener{
-            val teamA = binding.inputTeamA.text.toString()
-            val teamB = binding.inputTeamB.text.toString()
-
-            if (teamA.isNotEmpty()){
-                binding.tvTeamA.text = teamA
-            }
-
-            if (teamB.isNotEmpty()){
-                binding.tvTeamB.text = teamB
-            }
-        }
-
         // Reset skor
         binding.btnReset.setOnClickListener {
             viewModel.resetScores()
+            enableButtons(binding)  // Enable tombol kembali setelah reset
+            binding.tvWinner.text = ""  // Hapus pesan kemenangan
         }
+    }
+
+    // Fungsi untuk disable semua tombol
+    private fun disableButtons(binding: ActivityMainBinding) {
+        binding.btnLeft1.isEnabled = false
+        binding.btnLeft2.isEnabled = false
+        binding.btnLeft3.isEnabled = false
+        binding.btnRight1.isEnabled = false
+        binding.btnRight2.isEnabled = false
+        binding.btnRight3.isEnabled = false
+    }
+
+    // Fungsi untuk enable semua tombol
+    private fun enableButtons(binding: ActivityMainBinding) {
+        binding.btnLeft1.isEnabled = true
+        binding.btnLeft2.isEnabled = true
+        binding.btnLeft3.isEnabled = true
+        binding.btnRight1.isEnabled = true
+        binding.btnRight2.isEnabled = true
+        binding.btnRight3.isEnabled = true
     }
 }

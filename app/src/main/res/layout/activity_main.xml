@@ -13,7 +13,28 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
+
+    <View
+        android:id="@+id/bgTop"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/holo_red_dark"
+        app:layout_constraintTop_toBottomOf="@id/guideline3"
+        app:layout_constraintBottom_toTopOf="@id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/btBottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/holo_blue_dark"
+        app:layout_constraintTop_toBottomOf="@id/guideline2"
+        app:layout_constraintBottom_toTopOf="@id/guideline4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 <!--GUIDELINE-->
     <androidx.constraintlayout.widget.Guideline
@@ -21,91 +42,98 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="205dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="200dp" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="200dp" />
+        app:layout_constraintGuide_percent="0.20" />
 
-    <TextView
-        android:id="@+id/textView3"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SCORE TOTAL"
-        android:textSize="30sp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.90" />
+
+<!--HEADING-->
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="50sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        android:fontFamily="@font/basketball"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvWinner"/>
 
-    <!-- Input untuk nama tim A -->
-    <EditText
-        android:id="@+id/inputTeamA"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/tvWinner"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:hint="Input Nama Team"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2" />
-
-    <!-- Input untuk nama tim B -->
-    <EditText
-        android:id="@+id/inputTeamB"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:hint="Input Nama Team"
+        android:layout_marginTop="10dp"
+        android:text="-"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_name" />
 
     <!--TEAM NAME-->
     <TextView
         android:id="@+id/tvTeamA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:textSize="20sp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/basketball"
         android:gravity="center"
         android:text="TEAM A"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintTop_toBottomOf="@+id/guideline2" />
 
     <TextView
         android:id="@+id/tvTeamB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:textSize="20sp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/basketball"
         android:gravity="center"
         android:text="TEAM B"
+        android:textColor="@color/white"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline3" />
 
     <TextView
         android:id="@+id/tvScoreA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="POIN"
         android:gravity="center"
-        android:textSize="24sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:text="POIN"
+        android:textSize="80sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnLeft1"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        android:fontFamily="@font/basketball"
+        app:layout_constraintBottom_toTopOf="@+id/btnLeft2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTeamA" />
 
@@ -113,97 +141,132 @@
         android:id="@+id/tvScoreB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="POIN"
         android:gravity="center"
-        android:textSize="24sp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:text="POIN"
+        android:textSize="80sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnRight1"
+        android:fontFamily="@font/basketball"
+        app:layout_constraintBottom_toTopOf="@+id/btnRight2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTeamB" />
 
-    <!--LEFT BUTTON-->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLeft1"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
         android:text="+1"
-        app:layout_constraintBottom_toTopOf="@+id/btnLeft2"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="@color/white"
+        app:strokeWidth="2dp"
+        app:strokeColor="@android:color/white"
+        app:backgroundTint="@android:color/transparent"
+        app:cornerRadius="8dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/btnLeft2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.3"
+        app:rippleColor="@color/white"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLeft2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="+2"
-        app:layout_constraintBottom_toTopOf="@+id/btnLeft3"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="30dp"/>
+        android:textColor="@color/white"
+        app:strokeWidth="2dp"
+        app:strokeColor="@android:color/white"
+        app:backgroundTint="@android:color/transparent"
+        app:cornerRadius="8dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/btnLeft3"
+        app:layout_constraintStart_toEndOf="@+id/btnLeft1"
+        app:layout_constraintWidth_percent="0.3" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLeft3"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="+3"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="30dp"/>
+        android:textColor="@color/white"
+        app:strokeWidth="2dp"
+        app:strokeColor="@android:color/white"
+        app:backgroundTint="@android:color/transparent"
+        app:cornerRadius="8dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnLeft2"
+        app:layout_constraintWidth_percent="0.3" />
 
     <!--RIGHT BUTTON-->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRight1"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
         android:text="+1"
-        app:layout_constraintBottom_toTopOf="@+id/btnLeft2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guideline" />
+        android:textColor="@color/white"
+        app:strokeWidth="2dp"
+        app:strokeColor="@android:color/white"
+        app:backgroundTint="@android:color/transparent"
+        app:cornerRadius="8dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/btnLeft2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.3"
+        app:rippleColor="@color/white" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRight2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="+2"
-        app:layout_constraintBottom_toTopOf="@+id/btnLeft3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guideline"
-        android:layout_marginBottom="30dp"/>
+        android:textColor="@color/white"
+        app:strokeWidth="2dp"
+        app:strokeColor="@android:color/white"
+        app:backgroundTint="@android:color/transparent"
+        app:cornerRadius="8dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/btnRight3"
+        app:layout_constraintStart_toEndOf="@+id/btnRight1"
+        app:layout_constraintWidth_percent="0.3" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRight3"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="+3"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        android:textColor="@color/white"
+        app:strokeWidth="2dp"
+        app:strokeColor="@android:color/white"
+        app:backgroundTint="@android:color/transparent"
+        app:cornerRadius="8dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guideline"
-        android:layout_marginBottom="30dp"/>
+        app:layout_constraintStart_toEndOf="@+id/btnRight2"
+        app:layout_constraintWidth_percent="0.3" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnReset"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.95"
         android:layout_height="wrap_content"
         android:text="Reset Score"
+        android:textColor="@color/black"
+        app:strokeWidth="2dp"
+        app:strokeColor="@android:color/black"
+        app:backgroundTint="@android:color/transparent"
+        app:cornerRadius="12dp"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btnRename"
-        app:layout_constraintTop_toBottomOf="@id/guideline3" />
-
-    <Button
-        android:id="@+id/btnRename"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rename Team"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnReset" />
+        app:layout_constraintTop_toBottomOf="@+id/guideline4"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
