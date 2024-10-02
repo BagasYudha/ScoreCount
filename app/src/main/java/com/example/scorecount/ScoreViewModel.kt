@@ -1,6 +1,5 @@
 package com.example.scorecount
 
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,29 +17,23 @@ class ScoreViewModel : ViewModel() {
     var namaTeamA: String = ""
     var namaTeamB: String = ""
 
-    private val maxScore = 10  // Nilai maksimal untuk menang
+    private val maxScore = 10
 
     // LiveData untuk menyimpan pesan kemenangan
     val resultA: LiveData<String> = _mutableScoreA.map { scoreA ->
-        if (scoreA > _mutableScoreB.value!!) {
-            if (scoreA >= maxScore) {
-                if ((scoreA - _mutableScoreB.value!!) >= 2){
-                    "Team $namaTeamA menang"
-                }  else ""
-            } else ""
+        if (scoreA >= maxScore) {
+            "Team $namaTeamA win!"
         } else ""
     }
 
-    // LiveData untuk menyimpan pesan kemenangan
+
+    // LiveData untuk menyimpan pesan kemenangan tim B
     val resultB: LiveData<String> = _mutableScoreB.map { scoreB ->
-        if (scoreB > _mutableScoreA.value!!) {
-            if (scoreB >= maxScore) {
-                if ((scoreB - _mutableScoreA.value!!) >= 2){
-                    "Team $namaTeamB menang"
-                }  else ""
-            } else ""
+        if (scoreB >= maxScore) {
+            "Team $namaTeamB win!"
         } else ""
     }
+
 
     // Method untuk menambah skor
     fun incrementScore(isTeamA: Boolean, points: Int) {

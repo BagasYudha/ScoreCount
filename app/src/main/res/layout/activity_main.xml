@@ -13,30 +13,32 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
     <View
         android:id="@+id/bgTop"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@android:color/holo_red_dark"
+        android:background="@drawable/blue_stroke"
         app:layout_constraintTop_toBottomOf="@id/guideline3"
         app:layout_constraintBottom_toTopOf="@id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <View
-        android:id="@+id/btBottom"
+        android:id="@+id/bgBottom"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@android:color/holo_blue_dark"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/red_stroke"
         app:layout_constraintTop_toBottomOf="@id/guideline2"
         app:layout_constraintBottom_toTopOf="@id/guideline4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
 <!--GUIDELINE-->
+    <!-- GUIDELINE -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
@@ -49,49 +51,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.20" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.55" />
+        app:layout_constraintGuide_percent="0.50" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.90" />
+        app:layout_constraintGuide_percent="0.85" />
 
 <!--HEADING-->
     <TextView
         android:id="@+id/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/basketball"
         android:text="@string/app_name"
+        android:textColor="@color/white"
         android:textSize="50sp"
         android:textStyle="bold"
-        android:fontFamily="@font/basketball"
-        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/bgTop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tvWinner"/>
-
-    <TextView
-        android:id="@+id/tvWinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="-"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_name" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!--TEAM NAME-->
     <TextView
@@ -129,7 +118,7 @@
         android:gravity="center"
         android:textColor="@android:color/holo_red_dark"
         android:text="POIN"
-        android:textSize="80sp"
+        android:textSize="120sp"
         android:textStyle="bold"
         android:fontFamily="@font/basketball"
         app:layout_constraintBottom_toTopOf="@+id/btnLeft2"
@@ -144,7 +133,7 @@
         android:gravity="center"
         android:textColor="@android:color/holo_blue_dark"
         android:text="POIN"
-        android:textSize="80sp"
+        android:textSize="120sp"
         android:textStyle="bold"
         android:fontFamily="@font/basketball"
         app:layout_constraintBottom_toTopOf="@+id/btnRight2"
@@ -254,19 +243,38 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnReset"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.95"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/basketball"
         android:text="Reset Score"
-        android:textColor="@color/black"
-        app:strokeWidth="2dp"
-        app:strokeColor="@android:color/black"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:backgroundTint="@android:color/transparent"
         app:cornerRadius="12dp"
-        android:textSize="20sp"
+        android:layout_marginTop="-20dp"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline4"
+        app:layout_constraintWidth_percent="0.95"
+        app:strokeColor="@android:color/white"
+        app:strokeWidth="2dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBack"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.95"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:textColor="@color/white"
+        android:fontFamily="@font/basketball"
+        app:backgroundTint="@android:color/transparent"
+        app:cornerRadius="12dp"
+        android:textSize="16sp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guideline4"/>
+        app:layout_constraintTop_toBottomOf="@+id/btnReset"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
