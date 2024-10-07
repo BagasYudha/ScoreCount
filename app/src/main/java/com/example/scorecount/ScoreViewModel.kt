@@ -6,13 +6,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 
 class ScoreViewModel : ViewModel() {
+
     private val _mutableScoreA = MutableLiveData(0)
     val scoreA: LiveData<Int>
-    get() = _mutableScoreA
+        get() = _mutableScoreA
 
     private val _mutableScoreB = MutableLiveData(0)
     val scoreB: LiveData<Int>
-    get() = _mutableScoreB
+        get() = _mutableScoreB
 
     var namaTeamA: String = ""
     var namaTeamB: String = ""
@@ -26,14 +27,12 @@ class ScoreViewModel : ViewModel() {
         } else ""
     }
 
-
     // LiveData untuk menyimpan pesan kemenangan tim B
     val resultB: LiveData<String> = _mutableScoreB.map { scoreB ->
         if (scoreB >= maxScore) {
-            "Team $namaTeamB win!"
+            "Team$namaTeamB win!"
         } else ""
     }
-
 
     // Method untuk menambah skor
     fun incrementScore(isTeamA: Boolean, points: Int) {
